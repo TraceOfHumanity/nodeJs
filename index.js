@@ -1,10 +1,15 @@
 const http = require("http");
+const fs = require("fs");
+
+const homePage = fs.readFileSync("index.html");
+const aboutPage = fs.readFileSync("about.html");
+const contactPage = fs.readFileSync("contact.html");
 
 const server = http.createServer((request, response) => {
   if (request.url === "/") {
-    response.end("Home page");
+    response.end(homePage);
   } else if (request.url === "/about") {
-    response.end("About page");
+    response.end(aboutPage);
   } else if (request.url === "/contact") {
     response.end("Contact page");
   } else {
